@@ -1,25 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useRef, useState} from 'react';
+import Button from "@material-ui/core/Button";
+import useApp from './useApp.js'
 import './App.css';
 
+
+
+
 function App() {
+
+  const {seconds,minutes,title,startTimer,stopTimer,resetTimer} = useApp()
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+     <div className="App">
+       <h2>{title}</h2>
+       <div className="timer">
+         <span>{minutes}</span>
+         <span>:</span>
+         <span>{seconds}</span>
+       </div>
+       <div className="buttons">
+         <Button onClick={startTimer} color="secondary" variant="contained">Start</Button>
+         <Button onClick={stopTimer} color="primary" variant="contained">Stop</Button>
+         <Button onClick={resetTimer} color="primary" variant="contained">Reset</Button>
+       </div>
+     </div>
   );
 }
 
