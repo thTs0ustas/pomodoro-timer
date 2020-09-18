@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React from 'react';
 import Button from "@material-ui/core/Button";
 import useApp from './useApp.js'
 import './App.css';
@@ -8,7 +8,7 @@ import './App.css';
 
 function App() {
 
-  const {seconds,minutes,title,startTimer,stopTimer,resetTimer} = useApp()
+  const {seconds,minutes,title,isRunning,startTimer,stopTimer,resetTimer} = useApp()
 
   return (
      <div className="App">
@@ -19,8 +19,8 @@ function App() {
          <span>{seconds}</span>
        </div>
        <div className="buttons">
-         <Button onClick={startTimer} color="secondary" variant="contained">Start</Button>
-         <Button onClick={stopTimer} color="primary" variant="contained">Stop</Button>
+         {!isRunning || <Button onClick={()=>startTimer()} color="secondary" variant="contained">Start</Button>}
+         {isRunning || <Button onClick={()=>stopTimer()} color="primary" variant="contained">Stop</Button>}
          <Button onClick={resetTimer} color="primary" variant="contained">Reset</Button>
        </div>
      </div>
