@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import {useRef, useState} from 'react';
 
 
 const useApp = () => {
@@ -9,8 +9,8 @@ const useApp = () => {
   const [timeLeft, setTimeLeft] = useState(2)
   const [isRunning, setIsRunning] = useState(true)
   const [laps, setLaps] = useState(settingLaps)
-  const [rest, setRest] = useState(laps?laps-1:0)
-  const [timeToRest, setTimeToRest] = useState(false)
+  // const [rest, setRest] = useState(laps?laps-1:0)
+  // const [timeToRest, setTimeToRest] = useState(false)
   
   const minutes = pad_time(Math.floor(timeLeft / 60))
   const seconds = pad_time(timeLeft - minutes * 60)
